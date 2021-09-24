@@ -26,9 +26,12 @@ import org.json.JSONObject;
 import android.content.Intent;
 
 // ZXing packages
+import com.elliron.ob.MainActivity;
 import com.google.zxing.client.android.Intents;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.journeyapps.barcodescanner.CaptureActivity;
+
 
 import java.util.ArrayList;
 
@@ -53,8 +56,11 @@ public class ZXingPlugin extends CordovaPlugin {
             if (params.has("orientation_locked")) integrator.setOrientationLocked(params.getBoolean("orientation_locked")); // Orientation Locked
             if (params.has("camera_id")) integrator.setCameraId(params.getInt("camera_id")); // Camera Id
             if (params.has("beep_enabled")) integrator.setBeepEnabled(params.getBoolean("beep_enabled")); // Beep Enabled
-            if (params.has("timeout")) integrator.setTimeout(params.getInt("timeout")); // Timeout
+            if (params.has("timeout")) integrator.setTimeout(params.getInt("timeout")); // Timeout            
+            if (params.has("barcode_image_enabled")) integrator.setBarcodeImageEnabled(params.getBoolean("barcode_image_enabled")); // Beep Enabled
             
+            integrator.setCaptureActivity(ZXingCaptureActivity.class);
+
             // Scan Type
             if (params.has("scan_type")) {
                 String scanType = params.getString("scan_type");

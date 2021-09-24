@@ -22,9 +22,18 @@
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="ZXingPlugin">
                 <param name="android-package" value="com.marceloburegio.zxingplugin.ZXingPlugin"/>
-            </feature>
+            </feature>            
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity
+                android:name="com.marceloburegio.zxingplugin.ZXingCaptureActivity"
+                android:screenOrientation="sensor"
+                android:stateNotNeeded="true"
+                android:theme="@style/zxing_CaptureTheme"
+                android:windowSoftInputMode="stateAlwaysHidden"></activity>
         </config-file>
         <source-file src="src/android/ZXingPlugin.java" target-dir="src/com/marceloburegio/zxingplugin" />
+        <source-file src="src/android/ZXingCaptureActivity.java" target-dir="src/com/marceloburegio/zxingplugin" />
     </platform>
 
     <framework src="com.journeyapps:zxing-android-embedded:3.6.0" />
